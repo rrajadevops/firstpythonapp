@@ -1,0 +1,10 @@
+{% if all_album %}
+    <ul>
+        {% for album in all_album %}
+        <li> <a href="/personal/{{ album.id }}/">{{ album.album_title }} </a></li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <h2>You dont have any data in Album table</h2>
+{% endif %}
