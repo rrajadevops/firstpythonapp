@@ -22,6 +22,14 @@ class Album(models.Model):
     genre = models.CharField(max_length=200)
     album_logo = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.album_title + '-' + self.artist
+
 
 class song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    file_types = models.CharField(max_length=20, default='SOME STRING')
+    song_title = models.CharField(max_length=200, default='SOME STRING')
+
+    def __str__(self):
+        return self.song_title
