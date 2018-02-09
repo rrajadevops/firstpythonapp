@@ -1,7 +1,7 @@
 #from django.http import HttpResponse
 from django.http import Http404
 #from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import hobby, Album
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -15,8 +15,5 @@ def index(request):
 
 
 def details(request, playercount):
-    try:
-        album = Album.objects.get(pk=playercount)
-    except ObjectDoesNotExist:
-        raise Http404("Album does not exist")
+    album = get_object_or_404(Album, pk=playercount)
     return render(request, 'personal/details.html', {'album': album})
